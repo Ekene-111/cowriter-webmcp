@@ -208,6 +208,10 @@ button{
 
 /* Ideas */
 .idea-item{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:6px;
   padding: 7px 8px;
   border-left: 3px solid var(--accent);
   background: var(--bg);
@@ -215,6 +219,9 @@ button{
   font-size: 0.78rem;
   margin-bottom: 6px;
 }
+.idea-text{ flex:1; line-height:1.4; }
+.idea-item .icon-btn{ opacity: 0.5; flex-shrink:0; }
+.idea-item:hover .icon-btn{ opacity: 1; }
 
 /* Consistency */
 .consistency-report{
@@ -349,6 +356,11 @@ button{
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
+}
+.btn.danger{
+  background: #fff;
+  border-color: #c0392b;
+  color: #c0392b;
 }
 .btn:hover{ opacity: 0.9; }
 
