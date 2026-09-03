@@ -187,8 +187,15 @@ function renderOutlineList() {
       item.className = "outline-item";
 
       const text = document.createElement("span");
-      text.className = "outline-text";
+      text.className = "outline-text scene-editable";
+      text.contentEditable = "true";
       text.textContent = beat.text;
+      text.addEventListener("blur", () => {
+        const newText = text.textContent.trim();
+        if (newText !== beat.text) {
+          editOutlineBeat({ beatId: beat.id, text: newText });
+        }
+      });
       item.appendChild(text);
 
       const actions = document.createElement("span");
