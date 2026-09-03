@@ -593,6 +593,17 @@ function openActModal() {
 }
 
 /* ---------- toolbar buttons ---------- */
+document.getElementById("reset-btn").addEventListener("click", () => {
+  const ok = window.confirm(
+    "Reset CoWriter to the sample script? This clears everything currently on the page (scenes, characters, ideas)."
+  );
+  if (!ok) return;
+  localStorage.removeItem(STORAGE_KEY);
+  state = seedState();
+  activeSceneId = null;
+  saveState();
+  render();
+});
 document.getElementById("add-act-btn").addEventListener("click", openActModal);
 document.getElementById("add-character-btn").addEventListener("click", () => openCharacterModal(null));
 document.getElementById("add-idea-btn").addEventListener("click", openIdeaModal);
