@@ -347,7 +347,22 @@ function renderIdeaList() {
   state.ideas.forEach((idea) => {
     const item = document.createElement("div");
     item.className = "idea-item";
-    item.textContent = idea.text;
+
+    const text = document.createElement("span");
+    text.className = "idea-text";
+    text.textContent = idea.text;
+    item.appendChild(text);
+
+    const delBtn = document.createElement("button");
+    delBtn.className = "icon-btn";
+    delBtn.textContent = "✕";
+    delBtn.title = "Delete idea";
+    delBtn.onclick = () => {
+      deleteIdea(idea.id);
+      render();
+    };
+    item.appendChild(delBtn);
+
     container.appendChild(item);
   });
 }
@@ -532,6 +547,22 @@ function updateCharacter({ characterId, name, description, traits }) {
   if (typeof traits === "string") character.traits = traits;
   saveState();
   return character;
+}
+
+function deleteCharacter(characterId) {
+  const idx = state.characters.findIndex((c) => c.id === characterId);
+  if (idx === -1) return false;
+  state.characters.splice(idx, 1);
+  saveState();
+  return true;
+}
+
+function deleteIdea(ideaId) {
+  const idx = state.ideas.findIndex((i) => i.id === ideaId);
+  if (idx === -1) return false;
+  state.ideas.splice(idx, 1);
+  saveState();
+  return true;
 }
 
 function addIdea({ text }) {
@@ -776,12 +807,22 @@ function openCharacterModal(characterId) {
     <label>Traits</label>
     <input type="text" id="f-traits" value="${existing ? escapeHtml(existing.traits) : ""}" />
     <div class="modal-actions">
+      ${existing ? '<button class="btn danger" id="f-delete" style="margin-right:auto;">Delete</button>' : ""}
       <button class="btn" id="f-cancel">Cancel</button>
       <button class="btn primary" id="f-save">${existing ? "Save" : "Add character"}</button>
     </div>
   `,
     (modal) => {
       modal.querySelector("#f-cancel").onclick = closeModal;
+      if (existing) {
+        modal.querySelector("#f-delete").onclick = () => {
+          const ok = window.confirm(`Delete the character "${existing.name}"? This can't be undone.`);
+          if (!ok) return;
+          deleteCharacter(characterId);
+          closeModal();
+          render();
+        };
+      }
       modal.querySelector("#f-save").onclick = () => {
         const name = modal.querySelector("#f-name").value.trim();
         const description = modal.querySelector("#f-desc").value.trim();
