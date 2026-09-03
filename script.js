@@ -1034,7 +1034,7 @@ async function registerWebMcpTools() {
         "ALWAYS call this FIRST, before any other tool, no matter what the user is asking for. It reads the entire current script: the story premise (title, logline, theme, genre, tone), the human-authored outline (the story's real, act-by-act throughline — e.g. Act 1 with its beats, Act 2 with its beats, etc. — including beats not written as scenes yet), all acts and their actually-written scenes (heading, action, dialogue), the full character list, and the idea board. Every scene you write, every edit you make, and every consistency check must be grounded in this outline and premise — they are the source of truth for where the story is headed, not just whatever scene happens to be open. The outline is the plan; the scenes are what's actually been written; they won't always be in sync yet.",
       inputSchema: { type: "object", properties: {}, additionalProperties: false },
       execute: async () => {
-        return { content: [{ type: "text", text: JSON.stringify(getFullState(), null, 2) }] };
+        return { content: [{ type: "text", text: JSON.stringify(getFullState()) }] };
       },
     },
     {
@@ -1272,7 +1272,7 @@ async function registerWebMcpTools() {
         "Get every dialogue line in the script annotated with its speaker, plus the full character bible, formatted specifically for reviewing consistency. Use this to find things like: a character's dialogue contradicting their established traits, a speaker who has no character entry, or pacing/repetition issues across scenes. This tool returns data for you to analyze — after finding issues, report them to the user and optionally fix them with edit_scene / update_character.",
       inputSchema: { type: "object", properties: {}, additionalProperties: false },
       execute: async () => {
-        return { content: [{ type: "text", text: JSON.stringify(buildConsistencyPayload(), null, 2) }] };
+        return { content: [{ type: "text", text: JSON.stringify(buildConsistencyPayload()) }] };
       },
     },
   ];

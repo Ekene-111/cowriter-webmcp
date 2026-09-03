@@ -51,8 +51,18 @@ Your script is saved to your browser's local storage as you go, so refreshing th
 
 ## Tech
 
-Plain HTML, CSS, and vanilla JavaScript. No framework, no build tooling, no backend — the entire app (including all 8 tool definitions) lives in `script.js`. This was a deliberate choice: it keeps the WebMCP tool-registration code easy to read start to finish, with nothing hidden behind a framework's abstractions.
+Plain HTML, CSS, and vanilla JavaScript. No framework, no build tooling, no backend — the entire app (including all 12 tool definitions) lives in `script.js`. This was a deliberate choice: it keeps the WebMCP tool-registration code easy to read start to finish, with nothing hidden behind a framework's abstractions.
 
+## Roadmap
+
+Ideas for after the challenge deadline, roughly in priority order:
+
+- **Multi-scene consistency diffing** - let check_consistency compare against the previous run's report so an agent can flag only *new* contradictions instead of re-surfacing everything each time.
+- **Export** - PDF/Fountain export of the finished screenplay, so a script drafted here can leave the browser in an industry-standard format.
+- **Multi-document projects** - support more than one script per browser profile (currently a single script lives in local storage), with a lightweight project switcher.
+- **Real persistence** - optional backend/cloud sync so a script isn't tied to one browser's local storage.
+- **Scene-level undo** - a visible history/undo stack for agent-made edits, so a human can revert a single dd_scene/edit_scene call without hand-editing the page.
+- **Richer character bible** - arcs, relationships between characters, and a "first appearance" pointer the agent can use to catch characters who show up before being introduced.
 ## License
 
 MIT — see [LICENSE](./LICENSE).
