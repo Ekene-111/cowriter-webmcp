@@ -21,6 +21,26 @@
 
     <aside class="sidebar">
 
+      <section class="panel premise-panel-wrap">
+        <div class="panel-header">
+          <h2>Story Bible</h2>
+          <button class="mini-btn" id="edit-premise-btn" title="Edit the story's premise, theme, genre, tone">Edit</button>
+        </div>
+        <div id="premise-panel" class="premise-panel"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Outline / Throughline</h2>
+          <span>
+            <button class="mini-btn" id="import-outline-btn" title="Paste in your full outline, organized by act">Import</button>
+            <button class="mini-btn" id="add-beat-btn" title="Add a single beat to the outline">+</button>
+          </span>
+        </div>
+        <p class="hint">Your real outline, act by act — the source of truth the agent reads first, before touching anything else.</p>
+        <div id="outline-list" class="outline-list"></div>
+      </section>
+
       <section class="panel">
         <div class="panel-header">
           <h2>Script</h2>

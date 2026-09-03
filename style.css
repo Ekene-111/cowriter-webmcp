@@ -95,12 +95,35 @@ button{
   font-size: 0.75rem;
 }
 .mini-btn:hover{ background: var(--accent-soft); border-color: var(--accent); }
+.panel-header span{ display:flex; gap:6px; }
 
 .hint{
   font-size: 0.75rem;
   color: var(--ink-soft);
   margin: 4px 0 8px;
   line-height:1.4;
+}
+
+/* Story Bible */
+.premise-title{
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+.premise-row{
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+.premise-label{
+  display:block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 1px;
 }
 
 /* Acts / scenes */
@@ -158,6 +181,30 @@ button{
 .character-card:hover{ background: var(--bg); }
 .character-name{ font-weight: 700; }
 .character-desc{ color: var(--ink-soft); margin-top: 2px; }
+
+/* Outline */
+.outline-group{ margin-bottom: 12px; }
+.outline-group:last-child{ margin-bottom: 0; }
+.outline-group-title{
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+.outline-item{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:6px;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  margin-bottom: 6px;
+}
+.outline-text{ flex:1; line-height:1.4; }
+.outline-item .scene-actions{ opacity: 0.55; flex-shrink:0; }
+.outline-item:hover .scene-actions{ opacity: 1; }
 
 /* Ideas */
 .idea-item{
